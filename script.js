@@ -72,7 +72,7 @@ function Timer() {
         timeLeft--;
         time.textContent = 'Time:${timeLeft}s';
 
-        if (timeLeft=== 0 || questionCount===questions.length) {
+        if (timeLeft=== 0 || questionNumber===questions.length) {
             clearInterval(timerInterval);
             questionsEl.style.display = "none";
             finalEl.style.display= "block";
@@ -86,10 +86,10 @@ function Timer() {
 function startQuiz(){
     Intro.style.display = "none";
     questionsEl.style.display ="block";
-    questionCount= 0;
+    questionNumber= 0;
 
     Timer();
-    setQuestion(questionCount);  
+    setQuestion(questionNumber);  
 }
 function setQuestion(id) {
     if (id < questions.length) {
@@ -115,17 +115,17 @@ function setQuestion(id) {
 
     //CONDITIONALS
 
-    if (questions[questionCount].correctAnswer === event.target.value){
+    if (questions[questionNumber].correctAnswer === event.target.value){
         p.textContent = "CORRECT!";
     }
-    else if (questions[questionCount].correctAnswer !== event.target.value) {
+    else if (questions[questionNumber].correctAnswer !== event.target.value) {
         timeLeft = timeLeft - 10;
         p.textContent = "WRONG!";
     }
-    if (questionCount< questions.length) {
-        questionCount++;
+    if (questionNumbert< questions.length) {
+        questionNumber++;
     }
-    setQuestion(questionCount);
+    setQuestion(questionNumber);
  }
 
 
