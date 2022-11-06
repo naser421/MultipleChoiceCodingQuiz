@@ -27,7 +27,7 @@ const answerbtn = document.querySelectorAll("button.answer-btn");
 
 let submitScoreBtn = document.querySelector("#Submit-Selections");
 let clearScoreBtn = document.querySelector("#eraseScores");
-let viewScoreBtn = document.querySelector("view-scores");
+let viewScoreBtn = document.querySelector("#view-scores");
 let goBackBtn = document.querySelector('#Back-Button');
 
 // CALL ANSWER RESULTS
@@ -84,7 +84,7 @@ function Timer() {
 //START QUIZ
 
 function startQuiz(){
-    codeIntro.style.display = "none";
+    Intro.style.display = "none";
     questionsEl.style.display ="block";
     questionCount= 0;
 

@@ -83,5 +83,13 @@ div .style3 {
     justify-content: space-around;
     max-width: 75%;
     padding-left: 75px;
-
 }
+div .sub-list {
+    justify-content: start;
+}
+.sub-list {
+    justify-items: start;
+}
+
+/* Question Styles */
+.ol-questions
