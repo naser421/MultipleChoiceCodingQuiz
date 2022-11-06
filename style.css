@@ -35,8 +35,18 @@ header div {
     color:#f9005d;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-div .p-style {
+div .incorrect-style {
     font-size: 0.8cm;
     font:2px;
+    padding:0px 10px;
+    text-align: justify;
+}
+div .initial-style-1 {
+    font-size: .50cm;
+    font: 2px;
     padding-block: 10px;
+}
+section .wrapper{
+    display: grid;
+    grid-template-rows: 1fr, 2fr, 1fr;
 }
