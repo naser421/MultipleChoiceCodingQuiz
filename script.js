@@ -69,14 +69,14 @@ const questions = [
 
 function Timer() {
     let timerInterval = setInterval(function(){
-        secondsLeft--;
-        time.textContent = 'Time:${secondsLeft}s';
+        timeLeft--;
+        time.textContent = 'Time:${timeLeft}s';
 
-        if (secondsLeft=== 0 || questionCount===questions.length) {
+        if (timeLeft=== 0 || questionCount===questions.length) {
             clearInterval(timerInterval);
             questionsEl.style.display = "none";
             finalEl.style.display= "block";
-            score.textContent = secondsLeft;
+            score.textContent = timeLeft;
         }
     }, 1000);
 }
@@ -119,7 +119,7 @@ function setQuestion(id) {
         p.textContent = "CORRECT!";
     }
     else if (questions[questionCount].correctAnswer !== event.target.value) {
-        secondsLeft = secondsLeft - 10;
+        timeLeft = timeLeft - 10;
         p.textContent = "WRONG!";
     }
     if (questionCount< questions.length) {
@@ -136,7 +136,7 @@ function setQuestion(id) {
     highscoresEl.style.display = "block";
 
     let initl = InitialsInput.value.toUpperCase();
-    scoreList.push({ initials : initl, score: secondsLeft});
+    scoreList.push({ initials : initl, score: timeLeft});
 
     //HIGH SCORE LIST
 
@@ -187,8 +187,8 @@ function setQuestion(id) {
  goBackBtn.addEventListener('click', function() {
     highscoresEl.style.display='none';
     Intro.style.display ="block";
-    secondsLeft= 60;
-    time.textContent='Time:${secondsLeft}s';
+    timeLeft= 60;
+    time.textContent='Time:${timeLeft}s';
  });
 
 
