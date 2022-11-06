@@ -46,7 +46,42 @@ div .initial-style-1 {
     font: 2px;
     padding-block: 10px;
 }
-section .wrapper{
+section .wrapper {
     display: grid;
     grid-template-rows: 1fr, 2fr, 1fr;
+    grid-auto-rows: (10 px, auto);
+    justify-items: left;
+    align-content: space-between;
+}
+div .style2 {
+    display: grid;
+    grid-template-rows: 1fr, 2fr;
+    grid-auto-rows: (10px, auto);
+    flex: wrap;
+    justify-content: left;
+    align-content: space-between;
+}
+div .style3 {
+    display:grid;
+    grid-template-rows: 1fr, 2fr;
+    grid-auto-rows: (10px, auto);
+    flex: wrap;
+    justify-content: left;
+    align-content: space-between;
+}
+section div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 75%;
+    padding-left: 75px;
+}
+
+div .style3 {
+    display:inline;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 75%;
+    padding-left: 75px;
+
 }

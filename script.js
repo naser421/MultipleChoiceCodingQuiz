@@ -8,7 +8,7 @@ const start = document.querySelector("#start");
 const Intro = document.querySelector("#quiz-start");
 const questionsEl= document.querySelector(".total-questions");
 
-let questionsEl = document.querySelector("#question");
+let questionEl = document.querySelector("#questions");
 const correctIncorrect = document.querySelector("#correct-incorrect");
 let questionNumber = 0;
 
@@ -83,7 +83,7 @@ function Timer() {
 
 //START QUIZ
 
-function.startQuiz(){
+function startQuiz(){
     codeIntro.style.display = "none";
     questionsEl.style.display ="block";
     questionCount= 0;
@@ -128,7 +128,7 @@ function setQuestion(id) {
     setQuestion(questionCount);
  }
 
- 
+
  function addScore(event) {
     event.preventDefault();
 
@@ -178,13 +178,13 @@ function setQuestion(id) {
 
  start.addEventListener("click", startQuiz);
  answerbtn.forEach(item=>{
-    item.addEventListener('click'checkAnswer);
+    item.addEventListener('click', checkAnswer);
  });
 
  //SCORE EVENT
 
  submitScoreBtn.addEventListener('click', addScore);
- goBackBtn.addEventListener('click', function(){
+ goBackBtn.addEventListener('click', function() {
     highscoresEl.style.display='none';
     Intro.style.display ="block";
     secondsLeft= 60;
@@ -193,7 +193,7 @@ function setQuestion(id) {
 
 
  clearScoreBtn.addEventListener('click', clearGrade);
- viewScoreBtn.addEventListener("click", function() {
+ viewScoreBtn.addEventListener("click", function () {
     if (highscoresEl.style.display === "none"){
         highscoresEl.style.display = "block";
     }
