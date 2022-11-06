@@ -18,7 +18,7 @@ let InitialsInput = document.querySelector("#initials");
 
 //HIGH SCORES
 const highscoresEl = document.querySelector("#high-scores");
-let scoresListEl= document.querySelector("#score-list");
+let scoresListEl= document.querySelector(".score-list");
 let scoreList = [];
 
 //ANSWER BUTTONS
@@ -163,7 +163,7 @@ function setQuestion(id) {
  }
 
 
- function displayGrade() {
+ function displayGrades() {
     let storedGradeList = JSON.parse(localStorage.getItem("scoreList"));
     if(storedGradeList !== null) {
         scoreList = storedGradeList;
