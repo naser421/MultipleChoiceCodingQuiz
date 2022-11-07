@@ -8,7 +8,7 @@ const start = document.querySelector("#start");
 const Intro = document.querySelector("#quiz-start");
 const questionsEl= document.querySelector(".total-questions");
 
-let questionEl = document.querySelector("#questions");
+let questionEl = document.querySelector("#question");
 const correctIncorrect = document.querySelector("#correct-incorrect");
 let questionNumber = 0;
 
@@ -39,27 +39,27 @@ const answer4Btn = document.querySelector("#answer-4");
 // QUESTIONS ARRAY
 const questions = [
     {
-    question1 : "Commonly used data type DO NOT INCLUDE:",
+    question : "Commonly used data type DO NOT INCLUDE:",
     answers: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
     correctAnswer: "2"
     },
     {
-    question2 : "The condition in an if/else statement is enclosed within ________.",
+    question : "The condition in an if/else statement is enclosed within ________.",
     answers: ["1. quotes", "2. curly brackets", "3. parenthesis", "4. square brackets"],
     correctAnswer: "3"
     },
     {
-        question3: "String values must be enclosed within ______ when being assigned to variables.",
+        question: "String values must be enclosed within ______ when being assigned to variables.",
         answers: ["1. commas","2. curly brackets", "3. quotes", "4. parenthesis"],
         correctAnswer : "3"
     },
     {
-        question4: "Arrays in JavaScript can be used to store _______.",
+        question: "Arrays in JavaScript can be used to store _______.",
         answers: [ "1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"],
         correctAnswer: "4"
     },
     {
-        question5: " A very useful tool used during development and debugging for printing contenet to the debugger is:",
+        question: " A very useful tool used during development and debugging for printing contenet to the debugger is:",
         answers: [ "1. Javascript", "2. terminal/bash", "3. for loops", "4. console.log"],
         correctAnswer: "4"
     }
@@ -70,7 +70,7 @@ const questions = [
 function Timer() {
     let timerInterval = setInterval(function(){
         timeLeft--;
-        time.textContent = 'Time:${timeLeft}s';
+        time.textContent = `Time:${timeLeft}s`;
 
         if (timeLeft=== 0 || questionNumber===questions.length) {
             clearInterval(timerInterval);
@@ -122,7 +122,7 @@ function setQuestion(id) {
         timeLeft = timeLeft - 10;
         p.textContent = "WRONG!";
     }
-    if (questionNumbert< questions.length) {
+    if (questionNumber< questions.length) {
         questionNumber++;
     }
     setQuestion(questionNumber);
