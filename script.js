@@ -18,7 +18,7 @@ let InitialsInput = document.querySelector("#initials");
 
 //HIGH SCORES
 const highscoresEl = document.querySelector("#high-scores");
-let scoresListEl= document.querySelector(".score-list");
+let scoreListEl= document.querySelector(".score-list");
 let scoreList = [];
 
 //ANSWER BUTTONS
@@ -147,11 +147,11 @@ function setQuestion(id) {
             return -1;
         }
     });
-     scoresListEl.innerHTML="";
+     scoreListEl.innerHTML="";
      for (let i=0; i<scoreList.length; i++){
         let li = document.createElement("li");
-        li.textContent = '${scoreList[i].initials}: ${scoreList[i].score}';
-        scoresListEl.append(li);
+        li.textContent = `${scoreList[i].initials}: ${scoreList[i].score}`;
+        scoreListEl.append(li);
      }
      storeGrades();
      displayGrades();
@@ -172,7 +172,7 @@ function setQuestion(id) {
 
  function clearGrade() {
     localStorage.clear();
-    scoresListEl.innerHTML="";
+    scoreListEl.innerHTML="";
  }
 
 
