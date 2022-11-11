@@ -92,4 +92,16 @@ div .sub-list {
 }
 
 /* Question Styles */
-.ol-questions
+.ol-questions {
+    list-style-type: none;
+    display: contents;
+}
+.questions-li {
+    width: 250px;
+}
+#questions,
+#final-score,
+#high-scores,
+#correct-incorrect {
+    display: flex;
+}
