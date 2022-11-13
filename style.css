@@ -1,23 +1,85 @@
 :root {
-    --primary-color: #f9005d;
-    --secondary-color: yellow;
-    --tertiary-color: blue;
+    --hue-neutral: 200;
+    --hue-wrong: 0;
+    --hue-correct: 145;
     font-family: 'Courier New', Courier, monospace;
 }
 
-*{
+*, *::before, *::after {
     box-sizing: border-box;
     margin: 10;
     padding: 10;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 body {
+    --hue: var(--hue-neutral);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background-color: antiquewhite;
     color:#f9005d;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height:100vh;
+    background-color: hsl(var(--hue), 100%, 20%);
+}
+body.correct {
+    --hue: var(--hue-correct);
+}
+body.wrong {
+    --hue: var(--hue-wrong);
+}
+.container{
+    width: 800px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: 0 0 10px 2px;
+}
+.btn-grid {
+    display: grid;
+    gap: 10px;
+    margin: 20px 0;
+}
+.btn {
+    --hue: var(--hue-neutral);
+    border: 1px solid hsl(var(--hue), 100%, 30%);
+    background-color: hsl(var(--hue), 100%, 50%);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+    outline: none;
+
+}
+.btn: hover {
+    border-color: black;
+}
+.btn.correct {
+    --hue: var(--hue-correct);
+    color: black;
+}
+.btn.wrong {
+    --hue: var(--hue-wrong);
+}
+.start-btn, .next-btn{
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hide {
+    display: none;
 }
 
-header div {
+/* header div {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -92,7 +154,7 @@ div .sub-list {
 }
 
 /* Question Styles */
-.ol-questions {
+/* .ol-questions {
     list-style-type: none;
     display: contents;
 }
@@ -103,5 +165,18 @@ div .sub-list {
 #final-score,
 #high-scores,
 #correct-incorrect {
-    display: flex;
+    display: block;
 }
+.answer-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 10px;
+}
+div .style3 {
+    max-width: 100%;
+    }
+    
+    @media screen and (max-width: 375px){
+    h2, .switch {
+    font-size: .45cm;
+    } */ */
