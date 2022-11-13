@@ -22,22 +22,71 @@
 // let scoreList = [];
 const startButton = document.getElementById('start-btn')
 const questionContainerElement = document.getElementById('question-container')
+const questionElement = document.getElementById('question')
+const answerButtonsElement = document.getElementById('answer-buttons')
+const nextButton = document.getElementById('next-btn')
+let shuffledQuestions, currentQuestionIndex
 
 startButton.addEventListener('click', startGame)
+
 function startGame() {
-console.log('started')
-startButton.classList.add('hide')
-questionContainerElement.classList.remove('hide')
+    console.log('started')
+    startButton.classList.add('hide')
+    shuffledQuestions = questions.sort(() => Math.random() - .5)
+    currentQuestionIndex = 0
+    questionContainerElement.classList.remove('hide')
+    nextButton.classList.remove('hide')
+    setNextQuestion()
 
 }
+
 function setNextQuestion() {
+    resetState()
+    showQuestion(shuffledQuestions[currentQuestionIndex])
 
 
 }
-function selectAnswer() {
-
-
+function showQuestion(question) {
+    questionElement.innerText = question.question
+    question.answers.forEach(answer => {
+        const button = document.createElement('button')
+        button.innerText = answer.text
+        button.classList.add('btn')
+        if (answer.correct) {
+            button.dataset.correct = answer.correct
+        }
+        button.addEventListener('click', selectAnswer)
+        answerButtonsElement.appendChild(button)
+    })
 }
+function selectAnswer(e) {
+    const selectedButton = e.target
+    const correct = selectedButton.dataset.correct
+    setStatusClass(document.body, correct)
+    Array.from(answerButtonsElement.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct)
+    })
+}
+
+function setStatusClass (element, correct) {
+    clearStatusClass(element)
+    if (correct) {
+        element.classList.add ('correct')
+    } else { classList.add('wrong')}
+}
+function clearStatusClass(element) {
+    element.classList.remove('correct')
+    element.classList.remove('wrong')
+}
+
+
+function resetState() {
+    nextButton.classList.add('hide')
+    while (answerButtonsElement.firstChild) {
+        answerButtonsElement.removeChild(answerButtonsElement.firstChild)
+    }
+}
+
 
 //ANSWER BUTTONS
 
@@ -55,33 +104,58 @@ function selectAnswer() {
 // const answer4Btn = document.querySelector("#answer-4");
 
 // // QUESTIONS ARRAY
-// const questions = [
-//     {
-//     question : "Commonly used data type DO NOT INCLUDE:",
-//     answers: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
-//     correctAnswer: "2"
-//     },
-//     {
-//     question : "The condition in an if/else statement is enclosed within ________.",
-//     answers: ["1. quotes", "2. curly brackets", "3. parenthesis", "4. square brackets"],
-//     correctAnswer: "3"
-//     },
-//     {
-//         question: "String values must be enclosed within ______ when being assigned to variables.",
-//         answers: ["1. commas","2. curly brackets", "3. quotes", "4. parenthesis"],
-//         correctAnswer : "3"
-//     },
-//     {
-//         question: "Arrays in JavaScript can be used to store _______.",
-//         answers: [ "1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"],
-//         correctAnswer: "4"
-//     },
-//     {
-//         question: " A very useful tool used during development and debugging for printing contenet to the debugger is:",
-//         answers: [ "1. Javascript", "2. terminal/bash", "3. for loops", "4. console.log"],
-//         correctAnswer: "4"
-//     }
-// ];
+const questions = [
+    {
+        question: "Commonly used data type DO NOT INCLUDE:",
+        answers: [
+            { text: "1. strings", correct: false },
+            { text: "2. booleans", correct: true },
+            { text: "3. alerts", correct: false },
+            { text: "4. numbers", correct: false }
+        ],
+        //correctAnswer: "2"
+    },
+    {
+        question: "The condition in an if/else statement is enclosed within ________.",
+        answers: [
+            { text: "1. quotes", correct: false },
+            { text: "2. curly brackets", correct: false },
+            { text: "3. parenthesis", correct: true },
+            { text: "4. square brackets", correct: false }
+        ]
+        // correctAnswer: "3"
+    },
+    {
+        question: "String values must be enclosed within ______ when being assigned to variables.",
+        answers: [
+            { text: "1. commas", correct: false },
+            { text: "2. curly brackets", correct: false },
+            { text: "3. quotes", correct: true },
+            { text: "4. parenthesis", correct: false }
+        ]
+        //correctAnswer: "3"
+    },
+    {
+        question: "Arrays in JavaScript can be used to store _______.",
+        answers: [
+            { text: "1. numbers and strings", correct: false },
+            { text: "2. other arrays", correct: false },
+            { text: "3. booleans", correct: false },
+            { text: "4. all of the above", correct: true }
+        ]
+        //correctAnswer: "4"
+    },
+    {
+        question: " A very useful tool used during development and debugging for printing contenet to the debugger is:",
+        answers: [
+            { text: "1. Javascript", correct: false },
+            { text: "2. terminal/bash", correct: false },
+            {text:"3. for loops",correct: false },
+            {text:"4. console.log", correct: true } 
+        ]
+        //correctAnswer: "4"
+    }
+];
 
 // //TIMER
 
