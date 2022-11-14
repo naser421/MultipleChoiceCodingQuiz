@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,52 +8,56 @@
     <title>Coding Quiz</title>
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
     <header class="header-title" id="header">
         <div class="High-Scores-Button">
-                <div class="own-style">
-             <button class="view-high-scores" id="view-scores" type="button">View High Scores</button>
+            <div class="own-style">
+                <button class="view-high-scores" id="view-scores" type="button">View High Scores</button>
             </div>
             <div class="own-style">
-            <p class="timer">Time:60</p>
+                <p class="timer">Time:60</p>
             </div>
         </div>
     </header>
     <div class="container">
+        <p> Answer the questions within the time limit.Incorrect answers will take off 10 seconds.</p>
         <div id="question-container" class="hide">
-            <div id="question">Question</div>
+            <div id="question">Questions</div>
             <div id="answer-buttons" class="btn-grid">
-            <button class="btn"> Answer 1</button>
-            <button class="btn"> Answer 2</button>
-            <button class="btn"> Answer 3</button>
-            <button class="btn"> Answer 4</button>
-             </div>
+                <button class="btn"> Answer 1</button>
+                <button class="btn"> Answer 2</button>
+                <button class="btn"> Answer 3</button>
+                <button class="btn"> Answer 4</button>
+            </div>
         </div>
         <div class="controls">
             <button id="start-btn" class="start-btn btn">Start</button>
             <button id="next-btn" class="next-btn btn hide">Next</button>
+            <button id="view-Score-Btn" class="score-btn btn hide">View Scores</button>
         </div>
 
-    <!--MAIN PAGE-->
-    <main>
-        <section class="wrapper" id="quiz-start">
-        <!--QUIZ LAYOUT-->
-        <div class="Title">
-            <h1 class="activate" id="deactivate">Code Quiz</h1>
-        </div>
-        <div class="main" id="question-selection">
-            <p class="incorrect-style" id="question-li"> Answer the questions within the time limit.Incorrect answers will take off 10 seconds.
-            </p>
-        </div>
-        <div class="results" id="bottom-section">
-            <button id="start" class="start-btn btn-style-main" id="start-button">Start Quiz</button>
-        </div>
-        </section>
-        <!--SECTION ONE ACTIVATE-->
-      
-      
-      
-        <!--<section class="total-questions" id="questions">
+        <!--MAIN PAGE-->
+        <main>
+            <!-- <section class="wrapper" id="quiz-start">
+                QUIZ LAYOUT-->
+                <!-- <div class="Title"> -->
+                    <!-- <h1 class="activate" id="deactivate">Code Quiz</h1>
+                </div>
+                <div class="main" id="question-selection">
+                    <p class="incorrect-style" id="question-li"> Answer the questions within the time limit.Incorrect
+                        answers will take off 10 seconds.
+                    </p>
+                </div>
+                <div class="results" id="bottom-section">
+                    <button id="start" class="start-btn btn-style-main" id="start-button">Start Quiz</button>
+                </div> -->
+            </section>
+            <!--SECTION ONE ACTIVATE-->
+
+
+
+            <!--<section class="total-questions" id="questions">
         <div class="question-list">
             <div class="sub-list">
                 <ol class="ol-questions">
@@ -70,32 +75,36 @@
        </section> -->
 
 
-       <!--ANSWER SCORE SECTION-->
-       <section class="wrapper" id="final-score">
-        <div class="style-single">
-            <div class="style2">
-                <h2>QUIZ COMPLETE!</h2>
-                <p class="initial-style-1">ENTER Initials: 
-                    <span class="initials-form style-1"><input type="text" placeholder="Initials Here" id="initials" class="span1"></span>
-                    <button id="Submit-Selections" class="submit-score-btn btn-style-main">SUBMIT</button>
-                </p>
-            </div>
-        </div>
-       </section>
-       <!--HIGH SCORES-->
-       <section id="high-scores">
-        <div class="style-sole">
-            <div class="style3">
-                <p><h2>High Scores</h2></p>
-                <ol class="score-list"></ol>
-                <button id="Back-Button" class="go-back-btn btn-style-main">BACK</button>
-                <button id="eraseScores" class="erase-scores-btn btn-style-main">Erase Scores</button>
-            </div>
-        </div>
-       </section>
+            <!--ANSWER SCORE SECTION-->
+            <section class="score-list" id="final-score">
+                <div class="scores">
+                    <div class="quiz-end hide">
+                        <h2>QUIZ COMPLETE!</h2>
+                        <p class="initial-style-1">ENTER Initials:
+                            <span class="initials-form style-1"><input type="text" placeholder="Initials Here"
+                                    id="initials" class="span1"></span>
+                            <button id="Submit-Selections" class="submit-score-btn btn-style-main">SUBMIT</button>
+                        </p>
+                    </div>
+                </div>
+            </section>
+            HIGH SCORES
+            <section id="high-scores">
+                <div class="style-sole">
+                    <div class="style3">
+                        <p>
+                        <h2>High Scores</h2>
+                        </p>
+                        <ol class="score-list"></ol>
+                        <button id="Back-Button" class="go-back-btn btn-style-main">BACK</button>
+                        <button id="eraseScores" class="erase-scores-btn btn-style-main">Erase Scores</button>
+                    </div>
+                </div>
+            </section>
 
-    </main>
-    <script src="./script.js"></script>
-    
+        </main>
+        <script src="./script.js"></script>
+
 </body>
+
 </html>

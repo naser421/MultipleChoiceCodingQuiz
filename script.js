@@ -1,7 +1,7 @@
 // timer variables
-// var time = document.querySelector(".timer");
-// var score = document.querySelector("#score");
-// var timeLeft= 60;
+var time = document.querySelector(".timer");
+ var score = document.querySelector("#score");
+ var timeLeft= 60;
 
 // //Button variables
 // const start = document.querySelector("#start");
@@ -13,12 +13,12 @@
 // let questionNumber = 0;
 
 // //FINAL SCORE VARIABLES
-// const finalEl = document.querySelector("#final-score");
-// let InitialsInput = document.querySelector("#initials");
+ const finalEl = document.querySelector("#final-score");
+//  let InitialsInput = document.querySelector("#initials");
 
-// //HIGH SCORES
+// // //HIGH SCORES
 // const highscoresEl = document.querySelector("#high-scores");
-// let scoreListEl= document.querySelector(".score-list");
+//  let scoreListEl= document.querySelector(".score-list");
 // let scoreList = [];
 const startButton = document.getElementById('start-btn')
 const questionContainerElement = document.getElementById('question-container')
@@ -27,16 +27,26 @@ const answerButtonsElement = document.getElementById('answer-buttons')
 const nextButton = document.getElementById('next-btn')
 let shuffledQuestions, currentQuestionIndex
 
+
+let viewScoreBtn = document.querySelector("#view-scores")
+const quizend = document.querySelector('quiz-end')
+
 startButton.addEventListener('click', startGame)
+nextButton.addEventListener('click', () => {
+    currentQuestionIndex++
+    setNextQuestion()
+})
 
 function startGame() {
     console.log('started')
     startButton.classList.add('hide')
+    viewScoreBtn.classList.add('hide')
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
     questionContainerElement.classList.remove('hide')
     nextButton.classList.remove('hide')
     setNextQuestion()
+    Timer();
 
 }
 
@@ -66,13 +76,25 @@ function selectAnswer(e) {
     Array.from(answerButtonsElement.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
     })
+    if (shuffledQuestions.length> currentQuestionIndex + 1) {
+
+    nextButton.classList.remove('hide')
+    } else { 
+        //view scores not sure how to get the list to populate
+       // quizend.classList.remove('hide')
+        viewScoreBtn.innerText = "View Scores"
+        viewScoreBtn.classList.remove('hide')
+    }
 }
 
 function setStatusClass (element, correct) {
     clearStatusClass(element)
     if (correct) {
         element.classList.add ('correct')
-    } else { classList.add('wrong')}
+    } else { 
+        element.classList.add('wrong')
+        timeLeft = timeLeft - 10;
+    }
 }
 function clearStatusClass(element) {
     element.classList.remove('correct')
@@ -81,6 +103,7 @@ function clearStatusClass(element) {
 
 
 function resetState() {
+    clearStatusClass(document.body)
     nextButton.classList.add('hide')
     while (answerButtonsElement.firstChild) {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild)
@@ -97,11 +120,6 @@ function resetState() {
 // let viewScoreBtn = document.querySelector("#view-scores");
 // let goBackBtn = document.querySelector('#Back-Button');
 
-// // CALL ANSWER RESULTS
-// const answer1Btn = document.querySelector("#answer-1");
-// const answer2Btn = document.querySelector("#answer-2");
-// const answer3Btn = document.querySelector("#answer-3");
-// const answer4Btn = document.querySelector("#answer-4");
 
 // // QUESTIONS ARRAY
 const questions = [
@@ -159,19 +177,19 @@ const questions = [
 
 // //TIMER
 
-// function Timer() {
-//     let timerInterval = setInterval(function(){
-//         timeLeft--;
-//         time.textContent = `Time:${timeLeft}s`;
+function Timer() {
+    let timerInterval = setInterval(function(){
+        timeLeft--;
+        time.textContent = `Time:${timeLeft}s`;
 
-//         if (timeLeft=== 0 || questionNumber===questions.length) {
-//             clearInterval(timerInterval);
-//             questionsEl.style.display = "none";
-//             finalEl.style.display= "block";
-//             score.textContent = timeLeft;
-//         }
-//     }, 1000);
-// }
+        if (timeLeft=== 0 || currentQuestionIndex===questions.length) {
+            clearInterval(timerInterval);
+            questionElement.style.display = "hide";
+            finalEl.style.display= "block";
+            score.textContent = timeLeft;
+        }
+    }, 1000);
+}
 
 // //START QUIZ
 
@@ -221,49 +239,45 @@ const questions = [
 //  }
 
 
-//  function addScore(event) {
+// function addScore(event) {
 //     event.preventDefault();
 
-//     finalEl.style.display ='none';
+//     finalEl.style.display = 'none';
 //     highscoresEl.style.display = "block";
-
 //     let initl = InitialsInput.value.toUpperCase();
-//     scoreList.push({ initials : initl, score: timeLeft});
-
-//     //HIGH SCORE LIST
-
-//     scoreList = scoreList.sort((a,b) => {
+//     scoreList.push({ initials: initl, score: timeLeft });
+//     //   //HIGH SCORE LIST
+//     scoreList = scoreList.sort((a, b) => {
 //         if (a.score > b.score) {
 //             return 1;
 //         } else {
 //             return -1;
 //         }
-//     });
-//      scoreListEl.innerHTML="";
-//      for (let i=0; i<scoreList.length; i++){
+//     }); scoreListEl.innerHTML = "";
+//     for (let i = 0; i < scoreList.length; i++) {
 //         let li = document.createElement("li");
 //         li.textContent = `${scoreList[i].initials}: ${scoreList[i].score}`;
 //         scoreListEl.append(li);
-//      }
-//      storeGrades();
-//      displayGrades();
-//  }
+//     }
+//     storeGrades();
+//     displayGrades();
+// }
 
 
-//  function storeGrades() {
+// function storeGrades() {
 //     localStorage.setItem("scoreList", JSON.stringify(scoreList));
-//  }
+// }
 
 
-//  function displayGrades() {
+// function displayGrades() {
 //     let storedGradeList = JSON.parse(localStorage.getItem("scoreList"));
-//     if(storedGradeList !== null) {
+//     if (storedGradeList !== null) {
 //         scoreList = storedGradeList;
 //     }
-//  }
+// }
 
-//  function clearGrade() {
-//     localStorage.clear();
+//   function clearGrade() {
+//    localStorage.clear();
 //     scoreListEl.innerHTML="";
 //  }
 
