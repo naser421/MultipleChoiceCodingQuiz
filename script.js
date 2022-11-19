@@ -27,7 +27,7 @@ const nextButton = document.getElementById('next-btn')
 let shuffledQuestions, currentQuestionIndex
 
 
-let viewScoreBtn = document.querySelector("#view-scores")
+let viewScoreBtn = document.querySelector("#view-Score-Btn")
 viewScoreBtn.classList.add('hide');
 viewScoreBtn.addEventListener('click', viewHighScores)
 const quizend = document.querySelector('quiz-end-container')
@@ -204,9 +204,10 @@ function Timer() {
 
 function viewHighScores() {
     console.log('view high scores');
-
-
+    viewScoreBtn.addEventListener('click',addScore())
+    
 }
+
 
 // //START QUIZ
 
@@ -256,10 +257,10 @@ function viewHighScores() {
 
 // THIS FUNCTION ADDS THE SCORE TO THE LIST OF HIGH SCORES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 function addScore(event) {
-    event.preventDefault();
+    //event.preventDefault();
 
     finalEl.style.display = 'none';
-    highscoresEl.style.display = "block";
+    //highscoresEl.style.display = "block";
     let initl = InitialsInput.value.toUpperCase();
     scoreList.push({ initials: initl, score: timeLeft });
 
@@ -317,7 +318,7 @@ function displayGrades() {
 
 
 //  clearScoreBtn.addEventListener('click', clearGrade);
-//  viewScoreBtn.addEventListener("click", function () {
+//  //viewScoreBtn.addEventListener("click", function () {
 //     if (highscoresEl.style.display === "none"){
 //         highscoresEl.style.display = "block";
 //     }
