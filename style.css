@@ -160,7 +160,7 @@ div .sub-list {
 }
 .questions-li {
     width: 250px;
-}
+}*/
 #questions,
 #final-score,
 #high-scores,
@@ -179,4 +179,4 @@ div .style3 {
     @media screen and (max-width: 375px){
     h2, .switch {
     font-size: .45cm;
-    } */ */
+    } 
