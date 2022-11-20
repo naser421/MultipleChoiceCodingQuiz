@@ -78,7 +78,19 @@ body.wrong {
 .hide {
     display: none;
 }
-
+.high-score {
+    font-size: .8cm;
+    border: none;
+    background-color: transparent;
+    padding: 10px;
+    color:#f9005d;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+div .initial-style-1 {
+    font-size: .50cm;
+    font: 2px;
+    padding-block: 10px;
+}
 /* header div {
     display: flex;
     flex-wrap: wrap;
@@ -89,25 +101,14 @@ body.wrong {
     color:#f9005d;
     font-family:'Courier New', Courier, monospace;
 }
-.high-score {
-    font-size: .8cm;
-    border: none;
-    background-color: transparent;
-    padding: 10px;
-    color:#f9005d;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
+
 div .incorrect-style {
     font-size: 0.8cm;
     font:2px;
     padding:0px 10px;
     text-align: justify;
 }
-div .initial-style-1 {
-    font-size: .50cm;
-    font: 2px;
-    padding-block: 10px;
-}
+
 section .wrapper {
     display: grid;
     grid-template-rows: 1fr, 2fr, 1fr;
@@ -154,7 +155,7 @@ div .sub-list {
 }
 
 /* Question Styles */
-/* .ol-questions {
+.ol-questions {
     list-style-type: none;
     display: contents;
 }
@@ -165,8 +166,8 @@ div .sub-list {
 #final-score,
 #high-scores,
 #correct-incorrect {
-    display: block;
-}
+      display: block;
+} 
 .answer-btn {
     background-color: var(--primary-color);
     color: white;

@@ -14,7 +14,7 @@ const finalEl = document.querySelector("#final-score");
 let InitialsInput = document.querySelector("#initials");
 
 // // //HIGH SCORES
-const highscoresEl = document.querySelector("#high-scores");
+const highscoresEl = document.querySelector("#high-score");
 let scoreListEl = document.querySelector(".score-list");
 let scoreList = [];
 
@@ -23,7 +23,7 @@ const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 const nextButton = document.getElementById('next-btn')
-//const quizendContainerElement =document.getElementById('quiz-end-container')
+const quizendContainerElement =document.getElementById('#quiz-end-container')
 let shuffledQuestions, currentQuestionIndex
 
 
@@ -91,7 +91,7 @@ function selectAnswer(e) {
         //view scores not sure how to get the list to populate
         // quizend.classList.remove('hide')
         viewScoreBtn.innerText = "View Scores"
-        viewScoreBtn.classList.remove('hide')
+        viewScoreBtn.classList.remove('hide') 
         console.log("text");
 
     }
@@ -204,8 +204,10 @@ function Timer() {
 
 function viewHighScores() {
     console.log('view high scores');
-    viewScoreBtn.addEventListener('click',addScore())
-    
+    viewScoreBtn.addEventListener('click',addScore());
+    if (highscoresEl.style.display=== "none"){
+        highscoresEl.style.display==='block';
+    } 
 }
 
 
@@ -242,25 +244,14 @@ function viewHighScores() {
 
 //     //CONDITIONALS
 
-//     if (questions[questionNumber].correctAnswer === event.target.value){
-//         p.textContent = "CORRECT!";
-//     }
-//     else if (questions[questionNumber].correctAnswer !== event.target.value) {
-//         timeLeft = timeLeft - 10;
-//         p.textContent = "WRONG!";
-//     }
-//     if (questionNumber< questions.length) {
-//         questionNumber++;
-//     }
-//     setQuestion(questionNumber);
-//  }
-
 // THIS FUNCTION ADDS THE SCORE TO THE LIST OF HIGH SCORES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 function addScore(event) {
     //event.preventDefault();
 
-    finalEl.style.display = 'none';
+    finalEl.style.display = "block";
+    //event.preventDefault();
     //highscoresEl.style.display = "block";
+    
     let initl = InitialsInput.value.toUpperCase();
     scoreList.push({ initials: initl, score: timeLeft });
 
@@ -272,7 +263,9 @@ function addScore(event) {
         } else {
             return -1;
         }
-    }); scoreListEl.innerHTML = "";
+   
+    }); 
+    scoreListEl.innerHTML = "";
     for (let i = 0; i < scoreList.length; i++) {
         let li = document.createElement("li");
         li.textContent = `${scoreList[i].initials}: ${scoreList[i].score}`;
@@ -280,6 +273,7 @@ function addScore(event) {
     }
     storeGrades();
     displayGrades();
+    console.log('sort');
 }
 
 
