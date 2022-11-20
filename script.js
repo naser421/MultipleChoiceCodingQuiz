@@ -246,9 +246,11 @@ function viewHighScores() {
 
 // THIS FUNCTION ADDS THE SCORE TO THE LIST OF HIGH SCORES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 function addScore(event) {
+    var form = document.getElementById("#quiz-end-container");
+    form.classList.remove('hide');
     //event.preventDefault();
 
-    finalEl.style.display = "block";
+    //finalEl.style.display = "block";
     //event.preventDefault();
     //highscoresEl.style.display = "block";
     
