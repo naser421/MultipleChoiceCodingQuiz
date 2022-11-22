@@ -14,16 +14,20 @@ const finalEl = document.querySelector("#final-score");
 let InitialsInput = document.querySelector("#initials");
 
 // // //HIGH SCORES
+const quizRestart = document.querySelector("#quiz-start");
+
 const highscoresEl = document.querySelector("#high-score");
 let scoreListEl = document.querySelector(".score-list");
 let scoreList = [];
 
-const startButton = document.getElementById('start-btn')
-const questionContainerElement = document.getElementById('question-container')
-const questionElement = document.getElementById('question')
-const answerButtonsElement = document.getElementById('answer-buttons')
-const nextButton = document.getElementById('next-btn')
-const quizendContainerElement =document.getElementById('#quiz-end-container')
+const startButton = document.getElementById('start-btn');
+
+const questionContainerElement = document.getElementById('question-container');
+const questionElement = document.getElementById('question');
+const answerButtonsElement = document.getElementById('answer-buttons');
+const nextButton = document.getElementById('next-btn');
+//const submitBtn = document.getElementById('submit-btn');
+const quizendContainerElement = document.getElementById('#quiz-end-container');
 let shuffledQuestions, currentQuestionIndex
 
 
@@ -90,11 +94,18 @@ function selectAnswer(e) {
     } else {
         //view scores not sure how to get the list to populate
         // quizend.classList.remove('hide')
-        viewScoreBtn.innerText = "View Scores"
-        viewScoreBtn.classList.remove('hide') 
+        clearInterval(time);
+        viewScoreBtn.innerText = "Submit Scores" + ":" + timeLeft
+        viewScoreBtn.classList.remove('hide')
         console.log("text");
-
+        document.getElementById("question-container").style.display = "none"
+        document.getElementById('quiz-end-container').style.display = "block"
+        time.style.display = "none";
+        setTimeout(function () {
+            p.style.display = 'none';
+        }, 1000);
     }
+
 }
 
 function setStatusClass(element, correct) {
@@ -129,7 +140,7 @@ function resetState() {
 let submitScoreBtn = document.querySelector("#Submit-Selections");
 let clearScoreBtn = document.querySelector("#eraseScores");
 //viewScoreBtn = document.querySelector("#view-scores");
- let goBackBtn = document.querySelector('#Back-Button');
+let goBackBtn = document.querySelector('#Back-Button');
 
 
 // // QUESTIONS ARRAY
@@ -193,7 +204,7 @@ function Timer() {
         timeLeft--;
         time.textContent = `Time:${timeLeft}s`;
 
-        if (timeLeft <= 0 || currentQuestionIndex === questions.length) {
+        if (timeLeft <= 0 || currentQuestionIndex === questions.length-1) {
             clearInterval(timerInterval);
             questionElement.style.display = "hide";
             finalEl.style.display = "block";
@@ -204,10 +215,10 @@ function Timer() {
 
 function viewHighScores() {
     console.log('view high scores');
-    viewScoreBtn.addEventListener('click',addScore());
-    if (highscoresEl.style.display=== "none"){
-        highscoresEl.style.display==='block';
-    } 
+    viewScoreBtn.addEventListener('click', addScore());
+    if (highscoresEl.style.display === "none") {
+        highscoresEl.style.display === 'block';
+    }
 }
 
 
@@ -246,14 +257,14 @@ function viewHighScores() {
 
 // THIS FUNCTION ADDS THE SCORE TO THE LIST OF HIGH SCORES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 function addScore(event) {
-    var form = document.getElementById("#quiz-end-container");
-    form.classList.remove('hide');
-    //event.preventDefault();
+    // var form = document.getElementById("quiz-end-container");
+    // form.classList.remove('hide');
+    //event.preventDefault(event);
 
     //finalEl.style.display = "block";
     //event.preventDefault();
     //highscoresEl.style.display = "block";
-    
+
     let initl = InitialsInput.value.toUpperCase();
     scoreList.push({ initials: initl, score: timeLeft });
 
@@ -265,8 +276,8 @@ function addScore(event) {
         } else {
             return -1;
         }
-   
-    }); 
+
+    });
     scoreListEl.innerHTML = "";
     for (let i = 0; i < scoreList.length; i++) {
         let li = document.createElement("li");
@@ -276,6 +287,7 @@ function addScore(event) {
     storeGrades();
     displayGrades();
     console.log('sort');
+    viewScoreBtn.classList.add('hide');
 }
 
 
@@ -291,11 +303,12 @@ function displayGrades() {
     }
 }
 
-  function clearGrade() {
-   localStorage.clear();
-    scoreListEl.innerHTML="";
- }
+function clearGrade() {
+    localStorage.clear();
+    scoreListEl.innerHTML = "";
+}
 
+clearScoreBtn.addEventListener('click', clearGrade);
 
 //  start.addEventListener("click", startQuiz);
 //  answerbtn.forEach(item=>{
@@ -305,25 +318,18 @@ function displayGrades() {
 //  //SCORE EVENT
 
 //  submitScoreBtn.addEventListener('click', addScore);
-//  goBackBtn.addEventListener('click', function() {
-//     highscoresEl.style.display='none';
-//     Intro.style.display ="block";
-//     timeLeft= 60;
-//     time.textContent='Time:${timeLeft}s';
-//  });
+ goBackBtn.addEventListener('click', restartquiz);
 
+ function restartquiz (){
+    quizRestart.style.display='block';
+    
+    // startButton.classList.remove('hide');
+     highscoresEl.classList.add('hide');
+     timeLeft=60;
+     time.textContent = `Time:${timeLeft}s`;
+     
+    // goBackBtn.classList.add('hide');
 
-//  clearScoreBtn.addEventListener('click', clearGrade);
-//  //viewScoreBtn.addEventListener("click", function () {
-//     if (highscoresEl.style.display === "none"){
-//         highscoresEl.style.display = "block";
-//     }
-//     else if (highscoresEl.style.display === "block"){
-//         highscoresEl.style.display = "none";
-//     }
-//     else {
-//         return alert ("Hey! Take the Quiz. There is no Highscore");
-//     }
-//  });
+ }
 
 

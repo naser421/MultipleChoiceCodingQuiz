@@ -124,23 +124,25 @@ div .style2 {
     justify-content: left;
     align-content: space-between;
 }
-div .style3 {
+*/
+div .high-scores-list-sub {
     display:grid;
     grid-template-rows: 1fr, 2fr;
     grid-auto-rows: (10px, auto);
     flex: wrap;
     justify-content: left;
     align-content: space-between;
-}
+} */
 section div {
-    display: flex;
+    display: block;
     flex-wrap: wrap;
     justify-content: space-around;
     max-width: 75%;
     padding-left: 75px;
 }
 
-div .style3 {
+*/
+ div .high-scores-list-sub {
     display:inline;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -168,7 +170,7 @@ div .sub-list {
 #correct-incorrect {
       display: block;
 } 
-.answer-btn {
+/*.answer-btn {
     background-color: var(--primary-color);
     color: white;
     border-radius: 10px;
